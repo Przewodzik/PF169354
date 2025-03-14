@@ -1,5 +1,5 @@
 import unittest
-from polymonial import Polynomial
+from lab2.src.polymonial import Polynomial
 
 
 class TestPolynomial(unittest.TestCase):
