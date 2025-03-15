@@ -11,7 +11,6 @@ class TestShipInitialization(unittest.TestCase):
         ship1 = Ship("Rotterdam",7)
         self.assertIsInstance(ship1, Ship)
 
-
     def test_initialization(self):
         ship1 = Ship("Rotterdam", 7)
         self.assertEqual(ship1.destination, "Rotterdam")

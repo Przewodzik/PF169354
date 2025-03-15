@@ -16,15 +16,15 @@ class Ship:
         self.crew = []
 
     def calculate_fuel(self):
-        if self.voyage_duration >= 0:
-            return self.voyage_duration * 100
-        raise ValueError("Voyage duration must be a positive integer")
+        if self.voyage_duration < 0:
+            raise ValueError("Voyage duration must be a positive integer")
+        return self.voyage_duration * 100
 
     def add_crew_member(self,crew_member:str):
 
         if isinstance(crew_member,str):
-            if crew_member == "":
-                raise ValueError("Crew member cannot be empty")
+            if crew_member.strip() == "":
+                raise ValueError("Crew member name cannot be empty")
             self.crew.append(crew_member)
 
         else:
