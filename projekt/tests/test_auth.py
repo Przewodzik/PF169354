@@ -12,27 +12,29 @@ class TestAuth(unittest.TestCase):
 
         self.user = User(
             id=1,
-            name='John',
-            last_name='Doe',
-            email='john@example.com',
-            password='Password123!',
-            phone='523456789'
+            name="John",
+            last_name="Doe",
+            email="john@example.com",
+            password="Password123!",
+            phone="523456789",
         )
 
         self.admin = User(
             id=2,
-            name='Admin',
-            last_name='User',
-            email='admin@example.com',
-            password='Admin123!',
-            phone='789456123',
-            role=UserRole.ADMIN
+            name="Admin",
+            last_name="User",
+            email="admin@example.com",
+            password="Admin123!",
+            phone="789456123",
+            role=UserRole.ADMIN,
         )
 
     def test_login_success(self):
         """Test successful login with valid credentials."""
 
-        result = self.auth.login(user=self.user, email='john@example.com', password='Password123!')
+        result = self.auth.login(
+            user=self.user, email="john@example.com", password="Password123!"
+        )
 
         self.assertTrue(result)
         self.assertIn(self.user.id, self.auth.logged_users)
@@ -42,35 +44,45 @@ class TestAuth(unittest.TestCase):
         """Test login with invalid email type."""
 
         with self.assertRaises(TypeError):
-            self.auth.login(user=self.user, email=123, password='Password123!')
+            self.auth.login(user=self.user, email=123, password="Password123!")
 
     def test_login_invalid_password_type(self):
         """Test login with invalid password type."""
 
         with self.assertRaises(TypeError):
-            self.auth.login(user=self.user, email='john@example.com', password=123)
+            self.auth.login(user=self.user, email="john@example.com", password=123)
 
     def test_login_invalid_credentials(self):
         """Test login with invalid credentials."""
 
         with self.assertRaises(PermissionError):
-            self.auth.login(user=self.user, email='wrong@example.com', password='Password123!')
+            self.auth.login(
+                user=self.user, email="wrong@example.com", password="Password123!"
+            )
 
         with self.assertRaises(PermissionError):
-            self.auth.login(user=self.user, email='john@example.com', password='WrongPassword123!')
+            self.auth.login(
+                user=self.user, email="john@example.com", password="WrongPassword123!"
+            )
 
     def test_login_already_logged_in(self):
         """Test login when user is already logged in."""
 
-        self.auth.login(user=self.user, email='john@example.com', password='Password123!')
+        self.auth.login(
+            user=self.user, email="john@example.com", password="Password123!"
+        )
 
         with self.assertRaises(PermissionError):
-            self.auth.login(user=self.user, email='john@example.com', password='Password123!')
+            self.auth.login(
+                user=self.user, email="john@example.com", password="Password123!"
+            )
 
     def test_logout_success(self):
         """Test successful logout."""
 
-        self.auth.login(user=self.user, email='john@example.com', password='Password123!')
+        self.auth.login(
+            user=self.user, email="john@example.com", password="Password123!"
+        )
 
         result = self.auth.logout(user=self.user)
 
@@ -88,7 +100,9 @@ class TestAuth(unittest.TestCase):
         initial_status = self.auth.is_logged_in(user=self.user)
         self.assertFalse(initial_status)
 
-        self.auth.login(user=self.user, email='john@example.com', password='Password123!')
+        self.auth.login(
+            user=self.user, email="john@example.com", password="Password123!"
+        )
         logged_in_status = self.auth.is_logged_in(user=self.user)
         self.assertTrue(logged_in_status)
 
@@ -107,8 +121,12 @@ class TestAuth(unittest.TestCase):
     def test_login_logout_multiple_users(self):
         """Test login and logout with multiple users."""
 
-        self.auth.login(user=self.user, email='john@example.com', password='Password123!')
-        self.auth.login(user=self.admin, email='admin@example.com', password='Admin123!')
+        self.auth.login(
+            user=self.user, email="john@example.com", password="Password123!"
+        )
+        self.auth.login(
+            user=self.admin, email="admin@example.com", password="Admin123!"
+        )
 
         user_logged_in = self.auth.is_logged_in(user=self.user)
         admin_logged_in = self.auth.is_logged_in(user=self.admin)
@@ -125,5 +143,5 @@ class TestAuth(unittest.TestCase):
         self.assertTrue(admin_logged_in_after_user_logout)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
