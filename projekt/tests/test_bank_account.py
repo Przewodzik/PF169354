@@ -553,5 +553,5 @@ class TestBankAccount(unittest.TestCase):
                 self.assertAlmostEqual(interest, case["expected"], places=2)
 
 
-if __name__ == "__main__":
-    unittest.main()
+    if __name__ == "__main__":
+        unittest.main()

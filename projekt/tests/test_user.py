@@ -912,5 +912,5 @@ class TestUser(unittest.TestCase):
                     method(auth=self.auth, **kwargs)
 
 
-if __name__ == "__main__":
-    unittest.main()
+    if __name__ == "__main__":
+        unittest.main()

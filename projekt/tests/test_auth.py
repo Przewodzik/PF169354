@@ -143,5 +143,5 @@ class TestAuth(unittest.TestCase):
         self.assertTrue(admin_logged_in_after_user_logout)
 
 
-if __name__ == "__main__":
-    unittest.main()
+    if __name__ == "__main__":
+        unittest.main()
