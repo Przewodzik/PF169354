@@ -1,4 +1,4 @@
-from projekt.src.user import UserRole
+from user import UserRole
 
 
 class Auth:

@@ -3,7 +3,7 @@ from datetime import datetime
 import re
 from enum import Enum
 
-from projekt.src.bank import Bank
+from bank import Bank
 
 
 class AccountStatus(Enum):
@@ -31,7 +31,7 @@ class BankAccount:
                        or currency is not a string.
             ValueError: If balance is negative or currency is not supported by the bank.
         """
-        from projekt.src.user import User
+        from user import User
 
         try:
             balance = float(balance)

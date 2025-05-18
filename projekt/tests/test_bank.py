@@ -2,8 +2,8 @@ import unittest
 from unittest.mock import patch, Mock
 from datetime import datetime
 
-from projekt.src.bank import Bank
-from projekt.src.user import User
+from src.bank import Bank
+from src.user import User
 
 
 # noinspection PyTypeChecker

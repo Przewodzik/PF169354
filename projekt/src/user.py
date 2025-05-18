@@ -1,6 +1,7 @@
 import re
 from enum import Enum
-from projekt.src.bank_account import BankAccount, AccountStatus
+
+from bank_account import BankAccount, AccountStatus
 
 
 class UserRole(Enum):

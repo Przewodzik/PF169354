@@ -2,10 +2,10 @@ import unittest
 from unittest.mock import patch
 from datetime import datetime
 
-from projekt.src.bank import Bank
-from projekt.src.user import User
-from projekt.src.bank_account import BankAccount, AccountStatus
-from projekt.src.auth import Auth
+from src.bank import Bank
+from src.user import User
+from src.bank_account import BankAccount, AccountStatus
+from src.auth import Auth
 
 
 # noinspection PyTypeChecker

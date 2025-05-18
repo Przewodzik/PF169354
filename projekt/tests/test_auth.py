@@ -1,6 +1,7 @@
 import unittest
-from projekt.src.auth import Auth
-from projekt.src.user import User, UserRole
+
+from src.auth import Auth
+from src.user import User, UserRole
 
 
 class TestAuth(unittest.TestCase):
