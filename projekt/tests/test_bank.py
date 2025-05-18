@@ -391,6 +391,5 @@ class TestBank(unittest.TestCase):
 
         self.assertEqual(filtered_transactions, [])
 
-
     if __name__ == "__main__":
         unittest.main()

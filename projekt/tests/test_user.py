@@ -911,6 +911,5 @@ class TestUser(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     method(auth=self.auth, **kwargs)
 
-
     if __name__ == "__main__":
         unittest.main()

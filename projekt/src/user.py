@@ -67,8 +67,8 @@ class User:
         for bank_account in self.bank_accounts.values():
             if bank_account.bank == bank:
                 if (
-                    bank_account.status == AccountStatus.ACTIVE
-                    or bank_account.status == AccountStatus.INACTIVE
+                    bank_account.status == AccountStatus.ACTIVE or
+                    bank_account.status == AccountStatus.INACTIVE
                 ):
                     raise ValueError(
                         "You already have an active or inactive account in this bank."

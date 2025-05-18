@@ -50,7 +50,7 @@ class BankAccount:
         if not isinstance(currency, str):
             raise TypeError("Bank account currency must be a string")
 
-        if not currency in bank.currencies:
+        if currency not in bank.currencies:
             raise ValueError("Bank account currency must be a valid bank currency code")
 
         self.balance = balance
