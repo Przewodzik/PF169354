@@ -10,7 +10,7 @@ from src.user import User
 class TestBank(unittest.TestCase):
     """Test cases for the Bank class."""
 
-    @patch("projekt.src.bank.Bank._fetch_currencies")
+    @patch("src.bank.Bank._fetch_currencies")
     def setUp(self, mock_fetch):
         """Set up test fixtures."""
         mock_fetch.return_value = {
@@ -73,7 +73,7 @@ class TestBank(unittest.TestCase):
         self.assertAlmostEqual(gbp_rate, 5.0205)
         self.assertAlmostEqual(chf_rate, 4.5595)
 
-    @patch("projekt.src.bank.requests.get")
+    @patch("src.bank.requests.get")
     def test_fetch_currencies_success(self, mock_get):
         """Test successful fetching of currency rates."""
 
@@ -112,7 +112,7 @@ class TestBank(unittest.TestCase):
         response_status = mock_response.status_code
         self.assertEqual(response_status, 200)
 
-    @patch("projekt.src.bank.requests.get")
+    @patch("src.bank.requests.get")
     def test_fetch_currencies_failure(self, mock_get):
         """Test handling of API errors when fetching currencies."""
 
@@ -170,7 +170,7 @@ class TestBank(unittest.TestCase):
         retrieved_user = self.bank.get_user(user_id=3)
         self.assertEqual(retrieved_user, user3)
 
-    @patch("projekt.src.bank.requests.get")
+    @patch("src.bank.requests.get")
     def test_update_currencies(self, mock_get):
         """Test updating currency rates."""
 

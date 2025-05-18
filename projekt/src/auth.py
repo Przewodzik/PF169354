@@ -1,4 +1,4 @@
-from user import UserRole
+from src.user import UserRole
 
 
 class Auth:

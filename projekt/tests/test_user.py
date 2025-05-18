@@ -11,8 +11,8 @@ from src.bank_account import AccountStatus
 class TestUser(unittest.TestCase):
     """Test cases for the User class."""
 
-    @patch("projekt.src.bank_account.BankAccount._generate_account_number")
-    @patch("projekt.src.bank.Bank._fetch_currencies")
+    @patch("src.bank_account.BankAccount._generate_account_number")
+    @patch("src.bank.Bank._fetch_currencies")
     def setUp(self, mock_fetch, mock_account_number):
         """Set up test fixtures."""
         mock_fetch.return_value = {
@@ -273,7 +273,7 @@ class TestUser(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     self.user._validate_phone(invalid_phone)
 
-    @patch("projekt.src.bank_account.BankAccount._generate_account_number")
+    @patch("src.bank_account.BankAccount._generate_account_number")
     def test_open_bank_account_success(self, mock_account_number):
         """Test that a bank account is correctly opened by the user."""
 
@@ -291,7 +291,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(bank_account.owner, self.user)
         self.assertEqual(bank_account.bank, self.bank2)
 
-    @patch("projekt.src.bank_account.BankAccount._generate_account_number")
+    @patch("src.bank_account.BankAccount._generate_account_number")
     def test_open_bank_account_multiple_accounts(self, mock_account_number):
         """Test that a multiple bank accounts are correctly opened by the user."""
 
@@ -314,7 +314,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(bank_account2.owner, self.user)
         self.assertEqual(bank_account2.bank, self.bank2)
 
-    @patch("projekt.src.bank_account.BankAccount._generate_account_number")
+    @patch("src.bank_account.BankAccount._generate_account_number")
     def test_open_bank_account_in_the_same_bank(self, mock_account_number):
         """Test that user can't open more than one bank account in the same bank."""
 
@@ -352,7 +352,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(bank_account.status, AccountStatus.CLOSED)
         self.assertTrue(result)
 
-    @patch("projekt.src.bank_account.BankAccount._generate_account_number")
+    @patch("src.bank_account.BankAccount._generate_account_number")
     def test_get_total_balance_different_currency(self, mock_account_number):
         """Test that user can get total balance from all his accounts when accounts have diffrent currencies."""
 
@@ -373,7 +373,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(result["PLN"], 1000)
         self.assertEqual(result["EUR"], 500)
 
-    @patch("projekt.src.bank_account.BankAccount._generate_account_number")
+    @patch("src.bank_account.BankAccount._generate_account_number")
     def test_get_total_balance_same_currency(self, mock_account_number):
         """Test that user can get total balance from all his accounts when accounts have same currencies."""
 
@@ -457,7 +457,7 @@ class TestUser(unittest.TestCase):
         self.assertTrue(result)
         self.assertEqual(bank_account.balance, 1100)
 
-    @patch("projekt.src.bank_account.BankAccount._generate_account_number")
+    @patch("src.bank_account.BankAccount._generate_account_number")
     def test_transfer_success(self, mock_account_number):
         """Test transferring money between accounts successfully."""
 
@@ -542,7 +542,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(result[0]["type"], "deposit")
         self.assertEqual(result[1]["type"], "withdraw")
 
-    @patch("projekt.src.bank_account.datetime")
+    @patch("src.bank_account.datetime")
     def test_get_transactions_by_date(self, mock_now):
         """Test that user can get transactions by date."""
         from datetime import datetime
@@ -751,7 +751,7 @@ class TestUser(unittest.TestCase):
         self.assertIsNotNone(result)
         self.assertEqual(len(result), 0)
 
-    @patch("projekt.src.bank.Bank._fetch_currencies")
+    @patch("src.bank.Bank._fetch_currencies")
     def test_update_currencies_success(self, mock_fetch_currencies):
         """Test that an admin can successfully update currency exchange rates."""
 

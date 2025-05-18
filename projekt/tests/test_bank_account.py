@@ -12,8 +12,8 @@ from src.auth import Auth
 class TestBankAccount(unittest.TestCase):
     """Test cases for the BankAccount class."""
 
-    @patch("projekt.src.bank_account.BankAccount._generate_account_number")
-    @patch("projekt.src.bank.Bank._fetch_currencies")
+    @patch("src.bank_account.BankAccount._generate_account_number")
+    @patch("src.bank.Bank._fetch_currencies")
     def setUp(self, mock_fetch, mock_account_number):
         """Set up test fixtures."""
         mock_fetch.return_value = {

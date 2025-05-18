@@ -1,7 +1,7 @@
 import re
 from enum import Enum
 
-from bank_account import BankAccount, AccountStatus
+from src.bank_account import BankAccount, AccountStatus
 
 
 class UserRole(Enum):
